@@ -22,6 +22,9 @@ canvas1.place(x=50, y=100)
 l1=tk.Label(window,text="Nhận diện chữ số",font=('Helvetica',16,'bold'))
 l1.place(x=55,y=40)
 
+res_place = tk.Label(window, text='')
+res_place.place(x=150, y=370)
+
 def activate_paint(e):
     global lastx, lasty
     canvas1.bind('<B1-Motion>', paint)
@@ -37,6 +40,8 @@ canvas1.bind('<1>', activate_paint)
    
 def clear():
     canvas1.delete("all")
+    res_place.config(text='')
+
 #nút xóa
 btn = tk.Button(window, text="Clear", fg="white", bg="green", command=clear)
 btn.place(x=200,y=320)
@@ -78,8 +83,9 @@ def prediction():
     resToShow =str(result[0])
 
 # print result: resToShow có dạng [1.] [2.]...
-    res_place = tk.Label(window, text=resToShow[1])
-    res_place.place(x=150, y=370)
+    res_place.config(text=resToShow[1])
+    # res_place = tk.Label(window, text=resToShow[1])
+    # res_place.place(x=150, y=370)
     
 #     ----end find digit
 # nút Predict
